@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome - Image Caption Generator</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      background-position: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-shadow: 2px 2px 5px #000;
+      transition: background-image 1s ease-in-out;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease-out, bounce 2s infinite alternate;
+    }
+
+    p {
+      font-size: 20px;
+      margin-bottom: 40px;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    a {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 18px;
+      transition: background 0.3s ease;
+    }
+
+    a:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(10px); }
+    }
+  </style>
+</head>
+<body id="bg">
+  <h1>📸 Image Caption Generator</h1>
+  <p>Welcome to our AI-powered image understanding system</p>
+  <a href="{{ url_for('upload') }}">🚀 Get Started</a>
+
+  <script>
+    const images = [
+      "https://media.licdn.com/dms/image/v2/D5612AQHD0DbZrkq9-w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1694164747539?e=2147483647&v=beta&t=KvjgfKgEf3jPUlylFj-kNg9Q9RyenkgBa-5GotJXipM",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7uwxjEZjMGVP0GCqQFsp_HQgNzqtCBg4lTw&s",
+      "https://s.yimg.com/ny/api/res/1.2/BwMlUI1Pzak8_T7ZGfTXbg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://media.zenfs.com/en/newsfile_64/7151a20dc4713303fde03acc68d3ad39"
+    ];
+
+    let current = 0;
+    const bg = document.getElementById("bg");
+
+    function changeBackground() {
+      bg.style.backgroundImage = `url('${images[current]}')`;
+      current = (current + 1) % images.length;
+    }
+
+    changeBackground(); // Set first image
+    setInterval(changeBackground, 5000); // Change every 5 seconds
+  </script>
+</body>
+</html>
+
+
+
